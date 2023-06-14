@@ -15,6 +15,7 @@ Deno.test("Unindent text value", () => {
   ta.assertEquals(goldenUnindented, ws.unindentWhitespace(testIndented));
 });
 
+
 Deno.test("Multiple lines with whitespace as single line", () => {
   const goldenSingleLine = `select a, b, c from table where a = 'Value with spaces' and b = "Another set of spaces"`;
   const testMultiline = `

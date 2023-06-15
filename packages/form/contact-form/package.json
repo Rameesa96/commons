@@ -1,10 +1,10 @@
 {
-  "name": "@rameesa96/form-contact-form",
+  "name": "form-contact-form",
   "version": "0.0.6",
   "type": "commonjs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rameesa96/commons/nlc-contact-form.git",
+    "url": "git+https://github.com/rameesa96/commons/form-contact-form.git",
     "directory": "packages/contact-form/form"
   },
   "publishConfig": {

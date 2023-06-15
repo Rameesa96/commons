@@ -17,7 +17,7 @@
     "publish": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node tools/scripts/publish.mjs form-contact-form {args.ver} {args.tag}",
+        "command": "node tools/scripts/publish.mjs @rameesa96/form-contact-form {args.ver} {args.tag}",
         "args": "--ver='0.0.6' --tag='latest'"
       },
       "dependsOn": ["build"]

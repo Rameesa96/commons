@@ -16,6 +16,9 @@
     "noPropertyAccessFromIndexSignature": false,
     "baseUrl": ".",
     "paths": {
+      "@netspective-labs/contact-form": [
+        "packages/form/contact-form/src/index.ts"
+      ],
       "@netspective-labs/nlc-nodejs-astro": [
         "packages/nodejs/astro/src/index.js"
       ],

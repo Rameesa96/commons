@@ -1,0 +1,38 @@
+{
+  "name": "form-contact-form",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/form/contact-form/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/form/contact-form",
+        "main": "packages/form/contact-form/src/index.ts",
+        "tsConfig": "packages/form/contact-form/tsconfig.lib.json",
+        "assets": ["packages/form/contact-form/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs form-contact-form {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/form/contact-form/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["coverage/packages/form/contact-form"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../coverage/packages/form/contact-form"
+      }
+    }
+  },
+  "tags": []
+}

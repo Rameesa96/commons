@@ -1,0 +1,13 @@
+{
+  "name": "@netspective-labs/nlc-contact-form",
+  "version": "0.0.5",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/netspective-labs/commons/nlc-contact-form.git",
+    "directory": "packages/contact-form/form"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}

@@ -15,7 +15,10 @@
       }
     },
     "publish": {
-      "command": "node tools/scripts/publish.mjs form-contact-form {args.ver} {args.tag}",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd packages/form/contact-form/npm && npm publish"
+      },
       "dependsOn": ["build"]
     },
     "lint": {

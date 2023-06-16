@@ -10,8 +10,8 @@
   },
   "files": [
     "src",
-    "component/Form.web.d.ts",
-    "component/Form.web.js"
+    "src/component/Form.web.d.ts",
+    "src/component/Form.web.js"
   ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

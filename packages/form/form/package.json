@@ -1,12 +1,17 @@
 {
   "name": "@rameesa96/form",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rameesa96/commons/form.git",
     "directory": "packages/form/form"
   },
+  "files": [
+    "src",
+    "component/Form.d.ts",
+    "component/Form.js"
+  ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   }

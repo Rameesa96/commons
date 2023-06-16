@@ -1,10 +1,10 @@
 {
-  "name": "@netspective-labs/form",
+  "name": "@rameesa96-labs/form",
   "version": "0.0.9",
   "type": "commonjs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netspective-labs/commons/nlc-form.git",
+    "url": "git+https://github.com/rameesa96/commons/nlc-form.git",
     "directory": "packages/form/form"
   },
   "publishConfig": {

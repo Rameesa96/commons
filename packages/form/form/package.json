@@ -1,10 +1,10 @@
 {
-  "name": "@rameesa96-labs/form",
+  "name": "@rameesa96/form",
   "version": "0.0.9",
   "type": "commonjs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rameesa96/commons/nlc-form.git",
+    "url": "git+https://github.com/rameesa96/commons/form.git",
     "directory": "packages/form/form"
   },
   "publishConfig": {

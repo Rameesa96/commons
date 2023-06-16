@@ -1,6 +1,6 @@
 {
   "name": "@rameesa96/form",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "type": "commonjs",
   "main":"./src/index.ts",
   "repository": {
@@ -10,8 +10,8 @@
   },
   "files": [
     "src",
-    "component/Form.d.ts",
-    "component/Form.js"
+    "component/Form.web.d.ts",
+    "component/Form.web.js"
   ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

@@ -7,11 +7,11 @@ interface Field {
 
 interface Props {
   fields: Field[];
-  header: any;
+  header: Record<string, string>;
   url: string;
-  data: any;
+  data: Record<string, string>;
 }
 
-declare const ContactForm: ComponentType<Props>;
+declare const Form: ComponentType<Props>;
 
-export default ContactForm;
+export default Form;

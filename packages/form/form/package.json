@@ -1,7 +1,8 @@
 {
   "name": "@rameesa96/form",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "type": "commonjs",
+  "main":"./src/index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rameesa96/commons/form.git",

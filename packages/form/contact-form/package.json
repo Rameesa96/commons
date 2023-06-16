@@ -1,0 +1,17 @@
+{
+  "name": "@rameesa96/form",
+  "version": "0.0.6",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rameesa96/commons/form.git",
+    "directory": "packages/form/contact-form"
+  },
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    }
+  }
+}

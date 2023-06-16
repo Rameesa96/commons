@@ -1,2 +1,2 @@
-import Form from "./component/Form";
+import Form from "./components/Form.web";
 export { Form };

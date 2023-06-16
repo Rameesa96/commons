@@ -41,15 +41,5 @@
         "cacheableOperations": ["build", "lint", "test", "e2e", "check"]
       }
     }
-  },
-  "generators": {
-    "@nx/react": {
-      "application": {
-        "babel": true
-      },
-      "library": {
-        "unitTestRunner": "vitest"
-      }
-    }
   }
 }

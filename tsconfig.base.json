@@ -32,7 +32,6 @@
       "@netspective-labs/nlc-nodejs-webc": [
         "packages/nodejs-user-agent/webc/src/index.ts"
       ],
-      "@rameesa96/form": ["packages/form/contact-form/src/index.ts"],
       "netspective-labs/nlc-nodejs-remarkk": [
         "packages/nodejs/remarkk/src/index.ts"
       ]

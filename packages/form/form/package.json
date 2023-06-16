@@ -1,0 +1,13 @@
+{
+  "name": "@netspective-labs/form",
+  "version": "0.0.9",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/netspective-labs/commons/nlc-form.git",
+    "directory": "packages/form/form"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}

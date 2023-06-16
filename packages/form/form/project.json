@@ -2,6 +2,11 @@
   "name": "form-form",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/form/form/src",
+  "sources": [
+    "../../../../../packages/form/form/src/index.ts",
+    "../../../../../packages/form/form/src/components/Form.web.js",
+    "../../../../../packages/form/form/src/components/Form.web.d.ts"
+  ],
   "projectType": "library",
   "targets": {
     "build": {
@@ -18,7 +23,7 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "node tools/scripts/publish.mjs form-form {args.ver} {args.tag}",
-        "args": "--ver='0.0.12' --tag='latest'"
+        "args": "--ver='0.0.13' --tag='latest'"
       },
       "dependsOn": ["build"]
     },

@@ -1,10 +1,10 @@
 {
-  "name": "form-contact-form",
+  "name": "contact-form",
   "version": "0.0.6",
   "type": "commonjs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rameesa96/commons/form-contact-form.git",
+    "url": "git+https://github.com/Rameesa96/commons/form.git",
     "directory": "packages/contact-form/form"
   },
   "publishConfig": {

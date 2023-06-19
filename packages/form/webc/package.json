@@ -1,0 +1,13 @@
+{
+  "name": "@rameesa96/nlc-webc",
+  "version": "0.0.9",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rameesa96/commons/nlc-webc.git",
+    "directory": "packages/form/webc"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "name": "my-library",
-  "version": "0.0.5",
+  "name": "@rameesa96/my-library",
+  "version": "0.0.16",
   "type": "commonjs",
   "repository": {
     "type": "git",

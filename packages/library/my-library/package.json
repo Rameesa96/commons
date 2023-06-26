@@ -4,7 +4,7 @@
   "type": "commonjs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/<OWNER>/<REPO>/my-library.git",
+    "url": "git+https://github.com/rameesa96/commons/my-library.git",
     "directory": "packages/library/my-library"
   },
   "publishConfig": {

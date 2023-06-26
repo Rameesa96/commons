@@ -1,0 +1,13 @@
+{
+  "name": "my-library",
+  "version": "0.0.5",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/<OWNER>/<REPO>/my-library.git",
+    "directory": "packages/library/my-library"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}

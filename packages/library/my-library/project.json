@@ -1,0 +1,44 @@
+{
+  "name": "library-my-library",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/library/my-library/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/library/my-library",
+        "main": "packages/library/my-library/src/index.ts",
+        "tsConfig": "packages/library/my-library/tsconfig.lib.json",
+        "assets": ["packages/library/my-library/*.md"]
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node tools/scripts/publish.mjs my-library {args.ver} {args.tag}",
+        "args": "--ver='0.0.5' --tag='latest'"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/library/my-library/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["coverage/packages/library/my-library"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../coverage/packages/library/my-library"
+      }
+    }
+  },
+  "tags": []
+}

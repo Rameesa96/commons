@@ -35,7 +35,8 @@
       "@netspective-labs/webc": ["packages/form/webc/src/index.ts"],
       "netspective-labs/nlc-nodejs-remarkk": [
         "packages/nodejs/remarkk/src/index.ts"
-      ]
+      ],
+      "rameesa96/packages": ["packages/library/my-library/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

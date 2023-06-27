@@ -1,1 +1,1 @@
-export { default as TimeAgoSpanElement } from "./components/TimeAgo.web";
+export * from "./components/TimeAgo.web";

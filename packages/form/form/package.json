@@ -1,7 +1,7 @@
 
 {
   "name": "@rameesa96/form",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "type": "commonjs",
   "main": "./src/index.ts",
   "repository": {
@@ -9,15 +9,9 @@
     "url": "git+https://github.com/rameesa96/commons/form.git",
     "directory": "packages/form/form"
   },
-  "files": [
-    "src",
-    "src/component/Form.web.d.ts",
-    "src/component/Form.web.js"
-  ],
+ 
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.14"
   }
+ 
 }

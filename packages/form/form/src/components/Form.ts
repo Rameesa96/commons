@@ -15,7 +15,7 @@ export class FormComponent extends HTMLElement {
   }
 
   private handleSubmit = (event: Event) => {
-    // event.preventDefault();
+    event.preventDefault();
     // const formData = new FormData(this.formElement); // Use definite assignment assertion
     // const formEntries = Array.from(formData.entries());
 
@@ -28,7 +28,43 @@ export class FormComponent extends HTMLElement {
     if (this.shadowRoot) {
       this.shadowRoot.innerHTML = `
       <style>
-        /* Add your component styles here */
+      :host {
+            display: block;
+            font-family: Arial, sans-serif;
+            margin: 1rem;
+          }
+          
+          form {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            border-radius: 4px;
+          }
+          
+          label {
+            display: block;
+            margin-bottom: 0.5rem;
+          }
+          
+          input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+          }
+          
+          button {
+            padding: 0.5rem 1rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+          }
+          
+          button:hover {
+            background-color: #0056b3;
+          }
       </style>
       <form>
         <label for="name">Name</label>
@@ -37,6 +73,8 @@ export class FormComponent extends HTMLElement {
         <label for="email">Email</label>
         <input type="email" id="email" />
 
+          <label for="number">Contact Number</label>
+        <input type="number" id="number" />
         <button type="submit">Submit</button>
       </form>
     `;

@@ -58,7 +58,7 @@ export class FormComponent extends HTMLElement {
           }
           
           input {
-            width: 80% !important;
+            width: 90% !important;
             padding: 0.5rem;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -86,12 +86,17 @@ export class FormComponent extends HTMLElement {
             display:flex;
             width:100%;
           }
+          .space-div{
+            width:10%;
+          }
         </style>
         <form>
            ${parsedFields.map((field:any) => `<div class="form-field"><label>${field.title}</label><input type="text" name="${field.name}"></div>`).join('')}
+<div>
+<div class="space-div"></div>
 <div class="buttons"><button type="submit">Submit</button>
         <button type="button" id="cancel-button">Cancel</button>
-</div>
+</div></div>
         </form>
       `;
       const cancelButton = this.shadowRoot.querySelector('#cancel-button');

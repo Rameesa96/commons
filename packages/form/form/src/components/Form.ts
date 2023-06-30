@@ -58,11 +58,12 @@ export class FormComponent extends HTMLElement {
           
           label {
             display: block;
+            width:20%
             margin-bottom: 0.5rem;
           }
           
           input {
-            width: 100%;
+            width: 80%;
             padding: 0.5rem;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -76,23 +77,26 @@ export class FormComponent extends HTMLElement {
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            width:100%;
+            
           }
           
           button:hover {
             background-color: #0056b3;
           }
+          .buttons{
+            display:flex;
+            gap:2px;
+          }
           .form-field{
             display:flex;
-            gap:4px;
-            background:black;
+           
           }
         </style>
         <form>
            ${parsedFields.map((field:any) => `<div class="form-field"><label>${field.title}</label><input type="text" name="${field.name}"></div>`).join('')}
-          <button type="submit">Submit</button>
+<div class="buttons"><button type="submit">Submit</button>
         <button type="button" id="cancel-button">Cancel</button>
-
+</div>
         </form>
       `;
       const cancelButton = this.shadowRoot.querySelector('#cancel-button');

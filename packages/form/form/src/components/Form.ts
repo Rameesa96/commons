@@ -53,12 +53,12 @@ export class FormComponent extends HTMLElement {
           
           label {
             display: block;
-            width:30% !important;
+            width:25% !important;
             margin-bottom: 0.5rem;
           }
           
           input {
-            width: 70% !important;
+            width: 75% !important;
             padding: 0.5rem;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -87,7 +87,7 @@ export class FormComponent extends HTMLElement {
             width:100%;
           }
           .space-div{
-            width:10%;
+            width:25%;
           }
           .total-div{
             display:flex;

@@ -51,7 +51,6 @@ export class FormComponent extends HTMLElement {
           }
           
           form {
-            background-color: #f0f0f0;
             padding: 1rem;
             border-radius: 4px;
           }
@@ -89,7 +88,7 @@ export class FormComponent extends HTMLElement {
           }
           .form-field{
             display:flex;
-           
+            width:100%;
           }
         </style>
         <form>

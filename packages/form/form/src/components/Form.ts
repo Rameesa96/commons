@@ -8,7 +8,7 @@ export class FormComponent extends HTMLElement {
 
   connectedCallback() {
     this.render();
-    this.formElement!= this.shadowRoot?.querySelector('form'); // Add null check here
+    this.formElement = this.shadowRoot?.querySelector('form') as HTMLFormElement; // Use type assertion to assign the correct type
     if (this.formElement) {
       this.formElement.addEventListener('submit', this.handleSubmit);
     }
@@ -16,12 +16,8 @@ export class FormComponent extends HTMLElement {
 
   private handleSubmit = (event: Event) => {
     event.preventDefault();
-    // const formData = new FormData(this.formElement); // Use definite assignment assertion
-    // const formEntries = Array.from(formData.entries());
-
-    // // Process form data
-    // console.log(formEntries);
-    console.log("form submitted")
+    console.log('Form submitted');
+    // Perform your form submission logic here
   }
 
   private render() {
@@ -73,7 +69,7 @@ export class FormComponent extends HTMLElement {
         <label for="email">Email</label>
         <input type="email" id="email" />
 
-          <label for="number">Contact Number</label>
+        <label for="number">Contact Number</label>
         <input type="number" id="number" />
         <button type="submit">Submit</button>
       </form>

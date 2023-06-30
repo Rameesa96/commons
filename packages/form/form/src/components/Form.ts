@@ -16,15 +16,35 @@ export class FormComponent extends HTMLElement {
 
   private handleSubmit = (event: Event) => {
     event.preventDefault();
+
+    
+
+    // Perform your custom form submission logic here
     console.log('Form submitted');
-    // Perform your form submission logic here
+ 
+    // You can send the form data to a server, update state, or perform any other desired action
+
+    // Clear form fields
+    this.clearFormFields();
+  }
+
+  private clearFormFields() {
+    const inputFields = this.formElement?.querySelectorAll('input');
+    if (inputFields) {
+      inputFields.forEach((input: HTMLInputElement) => {
+        input.value = '';
+      });
+    }
   }
 
   private render() {
+    const fields = this.getAttribute('fields') ?? '[]'; // Provide a default value of '[]' if the attribute is null
+    const parsedFields = JSON.parse(fields);
+
     if (this.shadowRoot) {
       this.shadowRoot.innerHTML = `
-      <style>
-      :host {
+        <style>
+          :host {
             display: block;
             font-family: Arial, sans-serif;
             margin: 1rem;
@@ -61,19 +81,12 @@ export class FormComponent extends HTMLElement {
           button:hover {
             background-color: #0056b3;
           }
-      </style>
-      <form>
-        <label for="name">Name</label>
-        <input type="text" id="name" />
-
-        <label for="email">Email</label>
-        <input type="email" id="email" />
-
-        <label for="number">Contact Number</label>
-        <input type="number" id="number" />
-        <button type="submit">Submit</button>
-      </form>
-    `;
+        </style>
+        <form>
+          ${parsedFields.map((field: any) => `<input type="text" name="${field.name}" placeholder="${field.placeholder}">`).join('')}
+          <button type="submit">Submit</button>
+        </form>
+      `;
     }
   }
 }

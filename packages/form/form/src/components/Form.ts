@@ -76,17 +76,29 @@ export class FormComponent extends HTMLElement {
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            width:100%;
           }
           
           button:hover {
             background-color: #0056b3;
           }
+          .form-field{
+            display:flex;
+            gap:4px;
+            background:black;
+          }
         </style>
         <form>
-          ${parsedFields.map((field: any) => `<input type="text" name="${field.name}" placeholder="${field.placeholder}">`).join('')}
+           ${parsedFields.map((field:any) => `<div class="form-field"><label>${field.title}</label><input type="text" name="${field.name}"></div>`).join('')}
           <button type="submit">Submit</button>
+        <button type="button" id="cancel-button">Cancel</button>
+
         </form>
       `;
+      const cancelButton = this.shadowRoot.querySelector('#cancel-button');
+      if (cancelButton) {
+        cancelButton.addEventListener('click', this.clearFormFields);
+      }
     }
   }
 }

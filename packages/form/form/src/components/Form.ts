@@ -44,11 +44,7 @@ export class FormComponent extends HTMLElement {
     if (this.shadowRoot) {
       this.shadowRoot.innerHTML = `
         <style>
-          :host {
-            display: block;
-            font-family: Arial, sans-serif;
-            margin: 1rem;
-          }
+         
           
           form {
             padding: 1rem;
@@ -57,12 +53,12 @@ export class FormComponent extends HTMLElement {
           
           label {
             display: block;
-            width:40%
+            width:30% !important;
             margin-bottom: 0.5rem;
           }
           
           input {
-            width: 60%;
+            width: 70% !important;
             padding: 0.5rem;
             border: 1px solid #ccc;
             border-radius: 4px;

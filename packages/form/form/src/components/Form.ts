@@ -89,10 +89,14 @@ export class FormComponent extends HTMLElement {
           .space-div{
             width:10%;
           }
+          .total-div{
+            display:flex;
+            
+          }
         </style>
         <form>
            ${parsedFields.map((field:any) => `<div class="form-field"><label>${field.title}</label><input type="text" name="${field.name}"></div>`).join('')}
-<div>
+<div class="total-div">
 <div class="space-div"></div>
 <div class="buttons"><button type="submit">Submit</button>
         <button type="button" id="cancel-button">Cancel</button>

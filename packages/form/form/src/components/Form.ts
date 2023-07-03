@@ -23,7 +23,7 @@ export class FormComponent extends HTMLElement {
 
     if (inputFields) {
       inputFields.forEach((input: HTMLInputElement) => {
-        if (input.required && input.value.trim() === '') {
+        if (input.value === '') {
           isValid = false;
           input.classList.add('error');
         } else {

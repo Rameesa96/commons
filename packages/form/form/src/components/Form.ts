@@ -18,7 +18,6 @@ export class FormComponent extends HTMLElement {
 
     // Validate the form fields
     const inputFields = this.shadowRoot?.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
-    console.log(inputFields)
     let isValid = true;
 
     if (inputFields) {
@@ -28,6 +27,12 @@ export class FormComponent extends HTMLElement {
           input.classList.add('error');
         } else {
           input.classList.remove('error');
+        }
+
+        // Email validation
+        if (input.type === 'email' && !this.validateEmail(input.value)) {
+          isValid = false;
+          input.classList.add('error');
         }
       });
     }
@@ -41,6 +46,12 @@ export class FormComponent extends HTMLElement {
     } else {
       console.log('Form validation failed');
     }
+  }
+
+  private validateEmail(email: string): boolean {
+    // Simple email validation regex pattern
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
   }
 
 
@@ -119,6 +130,7 @@ export class FormComponent extends HTMLElement {
 
           }
           .star{
+            margin-left:2px;
             color:red;
           }
         </style>

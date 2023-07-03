@@ -18,7 +18,7 @@ export class FormComponent extends HTMLElement {
     event.preventDefault();
 
     // Validate the form fields
-    const inputFields = this.formElement?.querySelectorAll('input');
+    const inputFields = this.shadowRoot?.querySelectorAll('input');
     let isValid = true;
 
     if (inputFields) {
@@ -42,7 +42,6 @@ export class FormComponent extends HTMLElement {
       console.log('Form validation failed');
     }
   }
-
 
   private clearFormFields() {
     const inputFields = this.formElement?.querySelectorAll('input');

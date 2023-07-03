@@ -18,7 +18,7 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "node tools/scripts/publish.mjs form-form {args.ver} {args.tag}",
-        "args": "--ver='0.0.08' --tag='latest'"
+        "args": "--ver='0.0.09s' --tag='latest'"
       },
       "dependsOn": ["build"]
     },

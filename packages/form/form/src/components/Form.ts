@@ -1,5 +1,5 @@
 export class FormComponent extends HTMLElement {
-  private isValidEmail=false;
+  private isValidEmail=true;
   private formElement!: HTMLFormElement;
 
   constructor() {
@@ -49,6 +49,8 @@ export class FormComponent extends HTMLElement {
     } else {
       console.log('Form validation failed');
     }
+
+    this.render()
   }
 
   private validateEmail(email: string): boolean {

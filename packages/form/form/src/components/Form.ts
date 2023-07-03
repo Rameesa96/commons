@@ -1,5 +1,5 @@
 export class FormComponent extends HTMLElement {
-  private isValidEmail=true;
+  private isValidEmail=false;
   private formElement!: HTMLFormElement;
 
   constructor() {

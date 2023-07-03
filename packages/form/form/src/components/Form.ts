@@ -13,12 +13,11 @@ export class FormComponent extends HTMLElement {
       this.formElement.addEventListener('submit', this.handleSubmit);
     }
   }
-
   private handleSubmit = (event: Event) => {
     event.preventDefault();
 
     // Validate the form fields
-    const inputFields = Array.from(this.shadowRoot?.querySelectorAll('input') as NodeListOf<HTMLInputElement>);
+    const inputFields = this.shadowRoot?.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
     let isValid = true;
 
     if (inputFields) {
@@ -42,6 +41,7 @@ export class FormComponent extends HTMLElement {
       console.log('Form validation failed');
     }
   }
+
 
 
   private clearFormFields() {

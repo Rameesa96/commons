@@ -112,9 +112,19 @@ export class FormComponent extends HTMLElement {
             display:flex;
 
           }
+          .star{
+            color:red;
+          }
         </style>
         <form>
-           ${parsedFields.map((field:any) => `<div class="form-field"><label>${field.title}</label><input type="text" name="${field.name}"></div>`).join('')}
+           ${parsedFields.map((field: any) => `<div class="form-field">
+                  <label>${field.title}</label>
+                  ${field.required?`<span class="star">*</span>`:``}
+                  ${field.type === 'textarea'
+               ? `<textarea name="${field.name}" ${field.required ? 'required' : ''}></textarea>`
+               : `<input type="text" name="${field.name}" ${field.required ? 'required' : ''}>`
+                  }
+                </div>`).join('')}
             <div class="total-div">
           <div class="space-div"></div>
 <div class="buttons"><button type="submit">Submit</button>

@@ -18,6 +18,7 @@ export class FormComponent extends HTMLElement {
 
     // Validate the form fields
     const inputFields = this.shadowRoot?.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
+    console.log(inputFields)
     let isValid = true;
 
     if (inputFields) {

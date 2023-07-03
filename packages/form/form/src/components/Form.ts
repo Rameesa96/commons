@@ -81,7 +81,13 @@ export class FormComponent extends HTMLElement {
             border-radius: 4px;
             margin-bottom: 1rem;
           }
-          
+          textarea{
+            width: 75% !important;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+          }
           button {
             padding: 0.5rem 1rem;
             background-color: #007bff;
@@ -118,8 +124,7 @@ export class FormComponent extends HTMLElement {
         </style>
         <form>
            ${parsedFields.map((field: any) => `<div class="form-field">
-                  <label>${field.title}</label>
-                  ${field.required?`<span class="star">*</span>`:``}
+                  <label>${field.title}${field.required ? `<span class="star">*</span>` : ``}</label>
                   ${field.type === 'textarea'
                ? `<textarea name="${field.name}" ${field.required ? 'required' : ''}></textarea>`
                : `<input type="text" name="${field.name}" ${field.required ? 'required' : ''}>`

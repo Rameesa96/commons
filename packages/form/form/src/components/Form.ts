@@ -17,16 +17,32 @@ export class FormComponent extends HTMLElement {
   private handleSubmit = (event: Event) => {
     event.preventDefault();
 
-    
+    // Validate the form fields
+    const inputFields = this.formElement?.querySelectorAll('input');
+    let isValid = true;
 
-    // Perform your custom form submission logic here
-    console.log('Form submitted');
- 
-    // You can send the form data to a server, update state, or perform any other desired action
+    if (inputFields) {
+      inputFields.forEach((input: HTMLInputElement) => {
+        if (input.required && input.value.trim() === '') {
+          isValid = false;
+          input.classList.add('error');
+        } else {
+          input.classList.remove('error');
+        }
+      });
+    }
 
-    // Clear form fields
-    this.clearFormFields();
+    if (isValid) {
+      // Perform your custom form submission logic here
+      console.log('Form submitted');
+
+      // Clear form fields
+      this.clearFormFields();
+    } else {
+      console.log('Form validation failed');
+    }
   }
+
 
   private clearFormFields() {
     const inputFields = this.formElement?.querySelectorAll('input');
@@ -74,7 +90,9 @@ export class FormComponent extends HTMLElement {
             cursor: pointer;
             
           }
-          
+          .error {
+  border: 1px solid red;
+}
           button:hover {
             background-color: #0056b3;
           }
@@ -96,8 +114,8 @@ export class FormComponent extends HTMLElement {
         </style>
         <form>
            ${parsedFields.map((field:any) => `<div class="form-field"><label>${field.title}</label><input type="text" name="${field.name}"></div>`).join('')}
-<div class="total-div">
-<div class="space-div"></div>
+            <div class="total-div">
+          <div class="space-div"></div>
 <div class="buttons"><button type="submit">Submit</button>
         <button type="button" id="cancel-button">Cancel</button>
 </div></div>

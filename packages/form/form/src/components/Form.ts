@@ -32,7 +32,8 @@ export class FormComponent extends HTMLElement {
 
         // Email validation
         if (input.type === 'email' && !this.validateEmail(input.value)) {
-          isValid = false;
+          isValid=false;
+
           input.classList.add('error');
         }
       });
@@ -67,9 +68,20 @@ export class FormComponent extends HTMLElement {
   }
 
   private render() {
+    let isEmailvalid = true;
+    const inputFields = this.shadowRoot?.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
+    if (inputFields) {
+      inputFields.forEach((input: HTMLInputElement) => {
+      if (input.type === 'email' && !this.validateEmail(input.value)) {
+           isEmailvalid = false;
+        }
+      });
+    }
+   
     const fields = this.getAttribute('fields') ?? '[]'; // Provide a default value of '[]' if the attribute is null
     const parsedFields = JSON.parse(fields);
-
+    
+   
     if (this.shadowRoot) {
       this.shadowRoot.innerHTML = `
         <style>
@@ -136,6 +148,7 @@ export class FormComponent extends HTMLElement {
           }
         </style>
         <form>
+         ${isEmailvalid? `<span class="star">please enter valid email</span>` : ``}
            ${parsedFields.map((field: any) => `<div class="form-field">
                   <label>${field.title}${field.required ? `<span class="star">*</span>` : ``}</label>
                   ${field.types === 'textarea'

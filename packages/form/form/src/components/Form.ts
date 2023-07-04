@@ -1,7 +1,10 @@
 export class FormComponent extends HTMLElement {
   private isValidEmail=true;
   private formElement!: HTMLFormElement;
-
+  handleFormSubmit(formData:any) {
+    const event = new CustomEvent('formSubmit', { detail: formData });
+    this.dispatchEvent(event);
+  }
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -41,10 +44,12 @@ export class FormComponent extends HTMLElement {
     }
 
     if (isValid) {
+   
       const formData = new FormData(this.formElement);
-      console.log('Form submitted');
+      console.log(formData)
       this.clearFormFields();
-      return formData;
+      this.handleFormSubmit(formData); 
+     
     } else {
       console.log('Form validation failed');
       return null;

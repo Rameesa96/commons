@@ -1,9 +1,8 @@
 export class FormComponent extends HTMLElement {
   private isValidEmail=true;
   private formElement!: HTMLFormElement;
-  handleFormSubmit(formData:any) {
-    const event = new CustomEvent('formSubmit', { detail: formData });
-    this.dispatchEvent(event);
+  handleFormSubmit(formData: FormData) {
+    return formData;
   }
   constructor() {
     super();
@@ -48,8 +47,9 @@ export class FormComponent extends HTMLElement {
       const formData = new FormData(this.formElement);
       console.log(formData)
       this.clearFormFields();
-      this.handleFormSubmit(formData); 
-      return;
+      const submittedData = this.handleFormSubmit(formData);
+      console.log(submittedData);
+      return submittedData;
      
     } else {
       console.log('Form validation failed');

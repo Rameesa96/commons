@@ -41,11 +41,13 @@ export class FormComponent extends HTMLElement {
     }
 
     if (isValid) {
-      // Perform your custom form submission logic here
+      const formData = new FormData(this.formElement);
       console.log('Form submitted');
       this.clearFormFields();
+      return formData;
     } else {
       console.log('Form validation failed');
+      return null;
     }
 
   }

@@ -1,13 +1,14 @@
 export class FormComponent extends HTMLElement {
   private isValidEmail=true;
   private formElement!: HTMLFormElement;
-  private formData!: any;
+  private formData!: FormData;
   handleFormSubmit(formData: FormData) {
     return formData;
   }
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    this.formData = new FormData();
   }
 
   connectedCallback() {
@@ -19,7 +20,7 @@ export class FormComponent extends HTMLElement {
   }
   private handleSubmit = (event:Event) => {
     event.preventDefault();
-
+   
     // Validate the form fields
     const inputFields = this.shadowRoot?.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
     console.log(inputFields)

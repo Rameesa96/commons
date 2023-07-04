@@ -17,7 +17,7 @@ export class FormComponent extends HTMLElement {
       this.formElement.addEventListener('submit', this.handleSubmit);
     }
   }
-  private handleSubmit = (event: Event) => {
+  private handleSubmit = (event:Event) => {
     event.preventDefault();
 
     // Validate the form fields
@@ -49,6 +49,7 @@ export class FormComponent extends HTMLElement {
       console.log(formData)
       this.clearFormFields();
       this.handleFormSubmit(formData); 
+      return;
      
     } else {
       console.log('Form validation failed');

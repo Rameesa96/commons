@@ -31,6 +31,7 @@ export class FormComponent extends HTMLElement {
           input.classList.add('error');
         } else {
           input.classList.remove('error');
+          this.formElement.append(input.name, input.value);
         }
 
         // Email validation

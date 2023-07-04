@@ -34,6 +34,7 @@ export class FormComponent extends HTMLElement {
         } else {
           input.classList.remove('error');
           this.formData.append(input.name, input.value);
+          console.log(this.formData)
         }
 
         // Email validation
@@ -70,9 +71,15 @@ export class FormComponent extends HTMLElement {
 
   private clearFormFields() {
     const inputFields = this.formElement?.querySelectorAll('input');
+    const textArea = this.formElement?.querySelectorAll('textarea')
     if (inputFields) {
       inputFields.forEach((input: HTMLInputElement) => {
         input.value = '';
+      });
+    }
+    if (textArea) {
+      textArea.forEach((textarea: HTMLTextAreaElement) => {
+        textarea.value = '';
       });
     }
   }

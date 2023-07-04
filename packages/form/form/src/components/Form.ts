@@ -43,14 +43,11 @@ export class FormComponent extends HTMLElement {
     if (isValid) {
       // Perform your custom form submission logic here
       console.log('Form submitted');
-
-      // Clear form fields
       this.clearFormFields();
     } else {
       console.log('Form validation failed');
     }
 
-    this.render()
   }
 
   private validateEmail(email: string): boolean {
@@ -80,7 +77,6 @@ export class FormComponent extends HTMLElement {
       this.shadowRoot.innerHTML = `
         <style>
          
-          
           form {
             padding: 1rem;
             border-radius: 4px;

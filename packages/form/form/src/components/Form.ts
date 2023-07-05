@@ -103,13 +103,19 @@ export class FormComponent extends HTMLElement {
             border-radius: 4px;
           }
           
-          label {
+          .label {
             display: block;
             width:25% !important;
             margin-bottom: 0.5rem;
           }
-          
-          input {
+          select{
+             width: 75% !important;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+          }
+          .input {
             width: 75% !important;
             padding: 0.5rem;
             border: 1px solid #ccc;
@@ -157,6 +163,9 @@ export class FormComponent extends HTMLElement {
             margin-left:2px;
             color:red;
           }
+          .checkbox{
+            width:100%;
+          }
         </style>
         <form>
         ${parsedFields
@@ -181,9 +190,13 @@ export class FormComponent extends HTMLElement {
                               ${field.options
                     .map((option: string) => `<option value="${option}">${option}</option>`)
                     .join('')}
-                            </select>
+                            </select>/+
                           ` 
-                :`<input  class="input" name="${field.name}" type="${field.type}" ${field.required ? 'required' : ''}>`
+                  : field.types === 'checkbox'
+                    ? `
+                           <div class="checkbox"> <input type="checkbox" id="${field.name}" name="${field.name}" ${field.required ? 'required' : ''}>
+                            <label for="${field.name}">${field.title}</label></div>
+                    `:`<input  class="input" name="${field.name}" type="${field.type}" ${field.required ? 'required' : ''}>`
               }
               </div>`
           )

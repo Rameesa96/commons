@@ -190,7 +190,7 @@ export class FormComponent extends HTMLElement {
                               ${field.options
                     .map((option: string) => `<option value="${option}">${option}</option>`)
                     .join('')}
-                            </select>/+
+                            </select>
                           ` 
                   : field.types === 'checkbox'
                     ? `

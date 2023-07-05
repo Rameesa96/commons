@@ -39,22 +39,21 @@ export class FormComponent extends HTMLElement {
 
         // Email validation
         if (input.type === 'email' && !this.validateEmail(input.value)) {
-          isValid=false;
+          isValid = false;
+          this.isValidEmail = false;
           input.classList.add('error');
         }
       });
     }
 
     if (isValid) {
-   
-      console.log(this.formData)
       this.clearFormFields();
       const submittedData = this.handleFormSubmit(this.formData);
       console.log(submittedData);
       return submittedData;
-     
     } else {
       console.log('Form validation failed');
+      this.isValidEmail = true; // Reset the isValidEmail property for subsequent form submissions
       return null;
     }
     
@@ -155,20 +154,29 @@ export class FormComponent extends HTMLElement {
           }
         </style>
         <form>
-         
-           ${parsedFields.map((field: any) => `<div class="form-field">
-                  <label>${field.title}${field.required ? `<span class="star">*</span>` : ``}</label>
-                  ${field.types === 'textarea'
-               ? `<textarea name="${field.name}"  ${field.required ? 'required' : ''}></textarea>`
-             : `<input  name="${field.name}" type="${field.type}" ${field.required ? 'required' : ''}>`
-             }${(field.type == "email" && (field.value!=="") && !this.validateEmail(field.value))?`<span>Please enter valid email</span>`:``}
-                </div>`).join('')}
-            <div class="total-div">
+        ${parsedFields
+          .map(
+            (field: any) => `<div class="form-field">
+                <label>${field.title}${field.required ? `<span class="star">*</span>` : ``}</label>
+                ${field.types === 'textarea'
+                ? `<textarea name="${field.name}"  ${field.required ? 'required' : ''}></textarea>`
+                : `<input  name="${field.name}" type="${field.type}" ${field.required ? 'required' : ''}>`
+              }
+              </div>`
+          )
+          .join('')}
+        <div class="total-div">
           <div class="space-div"></div>
-<div class="buttons"><button type="submit">Submit</button>
-        <button type="button" id="cancel-button">Cancel</button>
-</div></div>
-        </form>
+          <div class="buttons">
+            <button type="submit">Submit</button>
+            <button type="button" id="cancel-button">Cancel</button>
+          </div>
+        </div>
+        ${!this.isValidEmail
+          ? `<span>Please enter a valid email</span>`
+          : ``
+        }
+      </form>
       `;
       const cancelButton = this.shadowRoot.querySelector('#cancel-button');
       if (cancelButton) {

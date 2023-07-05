@@ -9,18 +9,23 @@ export class FormComponent extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this.formData = new FormData();
   }
-
   connectedCallback() {
     this.render();
-    this.formElement = this.shadowRoot?.querySelector('form') as HTMLFormElement; // Use type assertion to assign the correct type
+    this.formElement = this.shadowRoot?.querySelector('form') as HTMLFormElement;
     if (this.formElement) {
       this.formElement.addEventListener('submit', this.handleSubmit);
     }
     const cancelButton = this.shadowRoot?.querySelector('#cancel-button');
     if (cancelButton) {
-      cancelButton.addEventListener('click', this.clearFormFields);
+      cancelButton.addEventListener('click', this.handleCancelButtonClick);
     }
   }
+
+  private handleCancelButtonClick = () => {
+    this.clearFormFields();
+    console.log("canceled")
+  }
+
   private handleSubmit = (event:Event) => {
     event.preventDefault();
    

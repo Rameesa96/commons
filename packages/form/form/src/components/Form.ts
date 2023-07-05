@@ -1,7 +1,6 @@
 export class FormComponent extends HTMLElement {
   private formElement!: HTMLFormElement;
   private formData!: FormData;
-  private isValidEmail=true
   handleFormSubmit(formData: FormData) {
     return formData;
   }
@@ -37,10 +36,8 @@ export class FormComponent extends HTMLElement {
           console.log(this.formData)
         }
 
-        // Email validation
         if (input.type === 'email' && !this.validateEmail(input.value)) {
           isValid = false;
-          this.isValidEmail = false;
           input.classList.add('error');
         }
       });
@@ -52,8 +49,7 @@ export class FormComponent extends HTMLElement {
       console.log(submittedData);
       return submittedData;
     } else {
-      console.log('Form validation failed');
-      this.isValidEmail = true; // Reset the isValidEmail property for subsequent form submissions
+      console.log('Form validation failed'); // Reset the isValidEmail property for subsequent form submissions
       return null;
     }
     
@@ -172,10 +168,6 @@ export class FormComponent extends HTMLElement {
             <button type="button" id="cancel-button">Cancel</button>
           </div>
         </div>
-        ${!this.isValidEmail
-          ? `<span>Please enter a valid email</span>`
-          : ``
-        }
       </form>
       `;
       const cancelButton = this.shadowRoot.querySelector('#cancel-button');

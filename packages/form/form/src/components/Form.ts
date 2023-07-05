@@ -162,7 +162,7 @@ export class FormComponent extends HTMLElement {
         ${parsedFields
           .map(
             (field: any) => `<div class="form-field">
-                <label>${field.title}${field.required ? `<span class="star">*</span>` : ``}</label>
+                ${field.title?`<label class="label">${field.title}${field.required ? `<span class="star">*</span>` : ``}</label>`:``}
                 ${field.types === 'textarea'
                 ? `<textarea name="${field.name}"  ${field.required ? 'required' : ''}></textarea>`
                 :
@@ -175,7 +175,15 @@ export class FormComponent extends HTMLElement {
                           `
                   )
                   .join('')
-                : `<input  name="${field.name}" type="${field.type}" ${field.required ? 'required' : ''}>`
+                : field.types === 'select'
+                  ? `
+                            <select name="${field.name}" ${field.required ? 'required' : ''}>
+                              ${field.options
+                    .map((option: string) => `<option value="${option}">${option}</option>`)
+                    .join('')}
+                            </select>
+                          ` 
+                :`<input  class="input" name="${field.name}" type="${field.type}" ${field.required ? 'required' : ''}>`
               }
               </div>`
           )

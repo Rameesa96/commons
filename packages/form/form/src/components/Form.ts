@@ -165,6 +165,16 @@ export class FormComponent extends HTMLElement {
                 <label>${field.title}${field.required ? `<span class="star">*</span>` : ``}</label>
                 ${field.types === 'textarea'
                 ? `<textarea name="${field.name}"  ${field.required ? 'required' : ''}></textarea>`
+                :
+              field.type === 'radio'
+                ? field.options
+                  .map(
+                    (option: string) => `
+                          <input type="radio" name="${field.name}" value="${option}" ${field.required ? 'required' : ''}>
+                          <label>${option}</label>
+                        `
+                  )
+                  .join('')
                 : `<input  name="${field.name}" type="${field.type}" ${field.required ? 'required' : ''}>`
               }
               </div>`

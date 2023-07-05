@@ -166,6 +166,13 @@ export class FormComponent extends HTMLElement {
           .checkbox{
             width:100%;
           }
+          .radio{
+             width: 75% !important;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+          }
         </style>
         <form>
         ${parsedFields
@@ -179,8 +186,8 @@ export class FormComponent extends HTMLElement {
                 ? field.options
                   .map(
                     (option: string) => `
-                            <input type="radio" id="${option}" name="${field.name}" value="${option}" ${field.required ? 'required' : ''}>
-                            <label for="${option}">${option}</label>
+                          <div class="radio"> <input type="radio" id="${option}" name="${field.name}" value="${option}" ${field.required ? 'required' : ''}>
+                            <label for="${option}">${option}</label></div>
                           `
                   )
                   .join('')
@@ -195,7 +202,7 @@ export class FormComponent extends HTMLElement {
                   : field.types === 'checkbox'
                     ? `
                            <div class="checkbox"> <input type="checkbox" id="${field.name}" name="${field.name}" ${field.required ? 'required' : ''}>
-                            <label for="${field.name}">${field.title}</label></div>
+                            <label for="${field.name}">${field.description}</label></div>
                     `:`<input  class="input" name="${field.name}" type="${field.type}" ${field.required ? 'required' : ''}>`
               }
               </div>`

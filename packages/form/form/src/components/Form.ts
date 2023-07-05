@@ -161,12 +161,12 @@ export class FormComponent extends HTMLElement {
                   ${field.types === 'textarea'
                ? `<textarea name="${field.name}"  ${field.required ? 'required' : ''}></textarea>`
              : `<input  name="${field.name}" type="${field.type}" ${field.required ? 'required' : ''}>`
-             }${(field.type == "email" && field.value!="" && !this.validateEmail(field.value))?`<span>Please enter valid email</span>`:``}
+             }${(field.type == "email" && (field.value!=="") && !this.validateEmail(field.value))?`<span>Please enter valid email</span>`:``}
                 </div>`).join('')}
             <div class="total-div">
           <div class="space-div"></div>
 <div class="buttons"><button type="submit">Submit</button>
-        <button type="button" id="cancel-button">Cancel</button>s
+        <button type="button" id="cancel-button">Cancel</button>
 </div></div>
         </form>
       `;

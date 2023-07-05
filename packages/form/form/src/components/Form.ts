@@ -16,6 +16,10 @@ export class FormComponent extends HTMLElement {
     if (this.formElement) {
       this.formElement.addEventListener('submit', this.handleSubmit);
     }
+    const cancelButton = this.shadowRoot?.querySelector('#cancel-button');
+    if (cancelButton) {
+      cancelButton.addEventListener('click', this.clearFormFields);
+    }
   }
   private handleSubmit = (event:Event) => {
     event.preventDefault();
@@ -165,15 +169,11 @@ export class FormComponent extends HTMLElement {
           <div class="space-div"></div>
           <div class="buttons">
             <button type="submit">Submit</button>
-            <button type="button" id="cancel-button">Cancel</button>
+            <button type="button" id="cancel-button" >Cancel</button>
           </div>
         </div>
       </form>
       `;
-      const cancelButton = this.shadowRoot.querySelector('#cancel-button');
-      if (cancelButton) {
-        cancelButton.addEventListener('click', this.clearFormFields);
-      }
     }
   }
 }

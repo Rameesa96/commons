@@ -41,6 +41,7 @@ export class FormComponent extends HTMLElement {
         if (input.type === 'email' && !this.validateEmail(input.value)) {
           isValid=false;
           this.isValidEmail=false;
+          this.render()
           input.classList.add('error');
         }
       });
@@ -58,6 +59,7 @@ export class FormComponent extends HTMLElement {
       console.log('Form validation failed');
       return null;
     }
+    
 
   }
 

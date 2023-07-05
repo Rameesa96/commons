@@ -1,5 +1,4 @@
 export class FormComponent extends HTMLElement {
-  private isValidEmail=true;
   private formElement!: HTMLFormElement;
   private formData!: FormData;
   handleFormSubmit(formData: FormData) {
@@ -40,8 +39,6 @@ export class FormComponent extends HTMLElement {
         // Email validation
         if (input.type === 'email' && !this.validateEmail(input.value)) {
           isValid=false;
-          this.isValidEmail=false;
-          this.render()
           input.classList.add('error');
         }
       });
@@ -163,12 +160,12 @@ export class FormComponent extends HTMLElement {
                   ${field.types === 'textarea'
                ? `<textarea name="${field.name}"  ${field.required ? 'required' : ''}></textarea>`
              : `<input  name="${field.name}" type="${field.type}" ${field.required ? 'required' : ''}>`
-                }${(field.type=="email" && !this.isValidEmail)?`<span>Please enter valid email</span>`:``}
+             }${(field.type == "email" && !this.validateEmail(field.value))?`<span>Please enter valid email</span>`:``}
                 </div>`).join('')}
             <div class="total-div">
           <div class="space-div"></div>
 <div class="buttons"><button type="submit">Submit</button>
-        <button type="button" id="cancel-button">Cancel</button>
+        <button type="button" id="cancel-button">Cancel</button>s
 </div></div>
         </form>
       `;

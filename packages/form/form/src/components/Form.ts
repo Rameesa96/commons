@@ -11,10 +11,9 @@ export class FormComponent extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.formData=new FormData()
   }
   connectedCallback() {
-    
+    this.render();
     this.formElement = this.shadowRoot?.querySelector('form') as HTMLFormElement;
     if (this.formElement) {
       this.formElement.addEventListener('submit', this.handleSubmit);
@@ -23,7 +22,8 @@ export class FormComponent extends HTMLElement {
     if (cancelButton) {
       cancelButton.addEventListener('click', this.handleCancelButtonClick);
     }
-    this.render();
+    this.formData = new FormData(this.formElement);
+    console.log(this.formData)
   }
   setOnSubmitCallback(callback: (formData: FormData) => void) {
     this.onSubmitCallback = callback;

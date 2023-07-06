@@ -11,7 +11,6 @@ export class FormComponent extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.formData = new FormData(this.formElement);
   }
   connectedCallback() {
     this.render();
@@ -34,6 +33,7 @@ export class FormComponent extends HTMLElement {
 
   private handleSubmit = (event:Event) => {
     event.preventDefault();
+    const formData= new FormData(this.formElement)
    
     // Validate the form fields
     const inputFields = this.shadowRoot?.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
@@ -47,8 +47,8 @@ export class FormComponent extends HTMLElement {
           input.classList.add('error');
         } else {
           input.classList.remove('error');
-          this.formData.set(input.name, input.value);
-          console.log(this.formData)
+          formData.set(input.name, input.value);
+          console.log(formData)
         }
 
         if (input.type === 'email' && !this.validateEmail(input.value)) {
@@ -60,9 +60,8 @@ export class FormComponent extends HTMLElement {
 
     if (isValid) {
       this.clearFormFields();
-      const submittedData = this.handleFormSubmit(this.formData);
-      console.log(submittedData);
-      return submittedData;
+      this.handleFormSubmit(formData)
+      return formData
     } else {
       console.log('Form validation failed'); // Reset the isValidEmail property for subsequent form submissions
       return null;

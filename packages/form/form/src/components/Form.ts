@@ -33,7 +33,7 @@ export class FormComponent extends HTMLElement {
 
   private handleSubmit = (event:Event) => {
     event.preventDefault();
-    const formData= new FormData(this.formElement)
+    
   
     // Validate the form fields
     const inputFields = this.shadowRoot?.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
@@ -48,8 +48,8 @@ export class FormComponent extends HTMLElement {
         } else {
           input.classList.remove('error');
           console.log(input.name,input.value)
-          formData.set(input.name, input.value);
-          console.log(formData)
+          this.formData.set(input.name, input.value);
+          console.log(this.formData)
         }
 
         if (input.type === 'email' && !this.validateEmail(input.value)) {
@@ -61,8 +61,8 @@ export class FormComponent extends HTMLElement {
 
     if (isValid) {
       this.clearFormFields();
-      this.handleFormSubmit(formData)
-      return formData
+      this.handleFormSubmit(this.formData)
+      return this.formData
     } else {
       console.log('Form validation failed'); // Reset the isValidEmail property for subsequent form submissions
       return null;

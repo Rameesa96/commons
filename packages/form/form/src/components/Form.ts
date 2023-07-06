@@ -76,14 +76,24 @@ export class FormComponent extends HTMLElement {
   private clearFormFields() {
     const inputFields = this.formElement?.querySelectorAll('input');
     const textArea = this.formElement?.querySelectorAll('textarea')
+    const dropDown = this.formElement?.querySelectorAll('select')
     if (inputFields) {
       inputFields.forEach((input: HTMLInputElement) => {
-        input.value = '';
+        if (input.type === 'radio' || input.type === 'checkbox') {
+          input.checked = false; // Uncheck radio buttons and checkboxes
+        } else {
+          input.value = ''; // Clear input field values
+        }
       });
     }
     if (textArea) {
       textArea.forEach((textarea: HTMLTextAreaElement) => {
         textarea.value = '';
+      });
+    }
+    if (dropDown) {
+     dropDown.forEach((select: HTMLSelectElement) => {
+        select.value = '';
       });
     }
   }
@@ -168,9 +178,6 @@ export class FormComponent extends HTMLElement {
           }
           .radio{
              width: 75% !important;
-            padding: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
             margin-bottom: 1rem;
           }
         </style>

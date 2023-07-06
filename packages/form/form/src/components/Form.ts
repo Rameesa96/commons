@@ -32,7 +32,7 @@ export class FormComponent extends HTMLElement {
   }
 
   private handleSubmit = (event:Event) => {
-    const formData=new(FormData)
+    const formData=new FormData()
     event.preventDefault();
     
   

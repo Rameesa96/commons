@@ -49,7 +49,7 @@ export class FormComponent extends HTMLElement {
         } else {
           input.classList.remove('error');
           console.log(input.name,input.value)
-         formData.set("sdg", "dsgg");
+         formData.append("sdg", "dsgg");
           console.log(formData)
         }
 

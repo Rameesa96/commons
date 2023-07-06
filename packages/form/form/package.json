@@ -1,7 +1,7 @@
 
 {
   "name": "@rameesa96/form",
-  "version": "0.0.71",
+  "version": "0.0.72",
   "type": "commonjs",
   "main": "./src/index.ts",
   "repository": {

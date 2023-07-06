@@ -34,7 +34,7 @@ export class FormComponent extends HTMLElement {
   private handleSubmit = (event:Event) => {
     event.preventDefault();
     const formData= new FormData(this.formElement)
-   
+  
     // Validate the form fields
     const inputFields = this.shadowRoot?.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
     console.log(inputFields)
@@ -47,6 +47,7 @@ export class FormComponent extends HTMLElement {
           input.classList.add('error');
         } else {
           input.classList.remove('error');
+          console.log(input.name,input.value)
           formData.set(input.name, input.value);
           console.log(formData)
         }

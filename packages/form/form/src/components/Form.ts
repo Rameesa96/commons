@@ -33,6 +33,8 @@ export class FormComponent extends HTMLElement {
 
   private handleSubmit = (event:Event) => {
     const formData=new FormData()
+    formData.append("sdg", "dsgg");
+    console.log(formData)
     event.preventDefault();
     
   
@@ -50,7 +52,7 @@ export class FormComponent extends HTMLElement {
           input.classList.remove('error');
           console.log(input.name,input.value)
          formData.append("sdg", "dsgg");
-          console.log(formData)
+         
         }
 
         if (input.type === 'email' && !this.validateEmail(input.value)) {
@@ -58,6 +60,7 @@ export class FormComponent extends HTMLElement {
           input.classList.add('error');
         }
       });
+      console.log(formData)
     }
 
     if (isValid) {

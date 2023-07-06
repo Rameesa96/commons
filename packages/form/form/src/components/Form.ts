@@ -1,13 +1,17 @@
 export class FormComponent extends HTMLElement {
   private formElement!: HTMLFormElement;
   private formData!: FormData;
+  private onSubmitCallback: ((formData: FormData) => void) | null = null;
   handleFormSubmit(formData: FormData) {
+    if (this.onSubmitCallback) {
+      this.onSubmitCallback(formData);
+    }
     return formData;
   }
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.formData = new FormData();
+    this.formData = new FormData(this.formElement);
   }
   connectedCallback() {
     this.render();
@@ -20,7 +24,9 @@ export class FormComponent extends HTMLElement {
       cancelButton.addEventListener('click', this.handleCancelButtonClick);
     }
   }
-
+  setOnSubmitCallback(callback: (formData: FormData) => void) {
+    this.onSubmitCallback = callback;
+  }
   private handleCancelButtonClick = () => {
     this.clearFormFields();
     console.log("canceled")
@@ -41,7 +47,7 @@ export class FormComponent extends HTMLElement {
           input.classList.add('error');
         } else {
           input.classList.remove('error');
-          this.formData.append(input.name, input.value);
+          this.formData.set(input.name, input.value);
           console.log(this.formData)
         }
 
@@ -157,6 +163,7 @@ export class FormComponent extends HTMLElement {
           .buttons{
             display:flex;
             gap:2px;
+            margin-top:"15px";
           }
           .form-field{
             display:flex;

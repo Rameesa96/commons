@@ -22,8 +22,6 @@ export class FormComponent extends HTMLElement {
     if (cancelButton) {
       cancelButton.addEventListener('click', this.handleCancelButtonClick);
     }
-   
-    console.log(this.formData)
   }
   setOnSubmitCallback(callback: (formData: FormData) => void) {
     this.onSubmitCallback = callback;
@@ -52,7 +50,7 @@ export class FormComponent extends HTMLElement {
           input.classList.remove('error');
           console.log(input.name,input.value)
          formData.set("sdg", "dsgg");
-          console.log(this.formData)
+          console.log(formData)
         }
 
         if (input.type === 'email' && !this.validateEmail(input.value)) {
@@ -64,8 +62,8 @@ export class FormComponent extends HTMLElement {
 
     if (isValid) {
       this.clearFormFields();
-      this.handleFormSubmit(this.formData)
-      return this.formData
+      this.handleFormSubmit(formData)
+      return formData
     } else {
       console.log('Form validation failed'); // Reset the isValidEmail property for subsequent form submissions
       return null;

@@ -1,6 +1,6 @@
 export class FormComponent extends HTMLElement {
   private formElement!: HTMLFormElement;
-  private formData!: FormData;
+
   private onSubmitCallback: ((formData: FormData) => void) | null = null;
   handleFormSubmit(formData: FormData) {
     if (this.onSubmitCallback) {
@@ -22,7 +22,7 @@ export class FormComponent extends HTMLElement {
     if (cancelButton) {
       cancelButton.addEventListener('click', this.handleCancelButtonClick);
     }
-    this.formData = new FormData(this.formElement);
+   
     console.log(this.formData)
   }
   setOnSubmitCallback(callback: (formData: FormData) => void) {
@@ -34,6 +34,7 @@ export class FormComponent extends HTMLElement {
   }
 
   private handleSubmit = (event:Event) => {
+    const formData=new(FormData)
     event.preventDefault();
     
   
@@ -50,7 +51,7 @@ export class FormComponent extends HTMLElement {
         } else {
           input.classList.remove('error');
           console.log(input.name,input.value)
-         this.formData.set("sdg", "dsgg");
+         formData.set("sdg", "dsgg");
           console.log(this.formData)
         }
 

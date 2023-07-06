@@ -11,6 +11,7 @@ export class FormComponent extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    this.formData=new FormData()
   }
   connectedCallback() {
     this.render();

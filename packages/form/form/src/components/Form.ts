@@ -177,7 +177,6 @@ export class FormComponent extends HTMLElement {
             width:100%;
           }
           .radio{
-             width: 75% !important;
             margin-bottom: 1rem;
           }
         </style>

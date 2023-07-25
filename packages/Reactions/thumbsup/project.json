@@ -1,0 +1,44 @@
+{
+  "name": "reactions-thumbsup",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/reactions/thumbsup/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/reactions/thumbsup",
+        "main": "packages/reactions/thumbsup/src/index.ts",
+        "tsConfig": "packages/reactions/thumbsup/tsconfig.lib.json",
+        "assets": ["packages/reactions/thumbsup/*.md"]
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node tools/scripts/publish.mjs Reactions-thumbsup {args.ver} {args.tag}",
+        "args": "--ver='0.0.1' --tag='latest'"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/reactions/thumbsup/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["coverage/packages/reactions/thumbsup"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../coverage/packages/reactions/thumbsup"
+      }
+    }
+  },
+  "tags": []
+}

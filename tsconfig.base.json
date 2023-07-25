@@ -16,6 +16,7 @@
     "noPropertyAccessFromIndexSignature": false,
     "baseUrl": ".",
     "paths": {
+      "@Rameesa96/commons": ["packages/reactions/thumbsup/src/index.ts"],
       "@netspective-labs/contact-form": [
         "packages/form/contact-form/src/index.ts"
       ],

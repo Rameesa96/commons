@@ -2,6 +2,7 @@
   "name": "@rameesa96/commons",
   "version": "0.2.0",
   "type": "commonjs",
+  "main": "./src/index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rameesa96/commons/thumbsup.git",

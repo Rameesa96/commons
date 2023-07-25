@@ -1,0 +1,44 @@
+{
+  "name": "reactions-math-helpers",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/reactions/math-helpers/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/reactions/math-helpers",
+        "main": "packages/reactions/math-helpers/src/index.ts",
+        "tsConfig": "packages/reactions/math-helpers/tsconfig.lib.json",
+        "assets": ["packages/reactions/math-helpers/*.md"]
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node tools/scripts/publish.mjs reactions--math-helpers {args.ver} {args.tag}",
+        "args": "--ver='0.0.1' --tag='latest'"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/reactions/math-helpers/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["coverage/packages/reactions/math-helpers"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../coverage/packages/reactions/math-helpers"
+      }
+    }
+  },
+  "tags": []
+}

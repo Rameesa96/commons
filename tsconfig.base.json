@@ -16,7 +16,6 @@
     "noPropertyAccessFromIndexSignature": false,
     "baseUrl": ".",
     "paths": {
-      "rameesa96/reactions": ["packages/reactions/thumbsup/src/index.ts"],
       "@netspective-labs/contact-form": [
         "packages/form/contact-form/src/index.ts"
       ],
@@ -34,10 +33,14 @@
         "packages/nodejs-user-agent/webc/src/index.ts"
       ],
       "@netspective-labs/webc": ["packages/form/webc/src/index.ts"],
+      "@rameesa96/math-helpers": [
+        "packages/reactions/math-helpers/src/index.ts"
+      ],
       "netspective-labs/nlc-nodejs-remarkk": [
         "packages/nodejs/remarkk/src/index.ts"
       ],
-      "rameesa96/packages": ["packages/library/my-library/src/index.ts"]
+      "rameesa96/packages": ["packages/library/my-library/src/index.ts"],
+      "rameesa96/reactions": ["packages/reactions/thumbsup/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

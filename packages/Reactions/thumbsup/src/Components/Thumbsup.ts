@@ -3,9 +3,9 @@ export class Thumbsup extends HTMLElement {
     names = '';
     isHovered = false;
     envInfo = {};
-bearerToken=""
-authAPIUrl=""
-query=""
+   bearerToken=""
+   authAPIUrl=""
+   query=""
     constructor() {
         super();
       this.attachShadow({ mode: 'open' });
@@ -16,6 +16,7 @@ query=""
      this.query = this.getAttribute('query')||"";
       this.bearerToken = this.getAttribute('bearerToken') || "";
      this.authAPIUrl = this.getAttribute('authAPIUrl')||""
+    this.handleClick = this.handleClick.bind(this);
     this.getData();
     this.render();
     const cancelButton = this.shadowRoot?.querySelector('#cancel-button');
@@ -64,7 +65,7 @@ this.render()
 }
   private handleClick() {
     console.log("beareh", this.bearerToken)
-    console.log("authAPIUrlh:", this.authAPIUrl);
+    console.log("authAPIUrlh:",this.authAPIUrl);
     console.log("queryh:", this.query);
     console.log("clicked");
     if (!this.authAPIUrl) {
@@ -106,7 +107,7 @@ this.render()
         this.shadowRoot.innerHTML = `
       <div>
         <span class="slds-m-right_x-small slds-m-right_x-bottom" style="position: relative">
-          <button type="button" id="cancel-button">Follow 👍${this.count}</button>
+          <button type="button" id="cancel-button" >Follow 👍${this.count}</button>
         </span>
       </div>
     `;}

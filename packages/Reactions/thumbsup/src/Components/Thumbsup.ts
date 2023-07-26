@@ -56,11 +56,11 @@ this.render()
       console.log("clicked")
       const query = this.getAttribute('query')
       const bearerToken = this.getAttribute('bearerToken')|| ""
-      const authAPIUrl = this.getAttribute('authAPIUrl')
-      if (!authAPIUrl) {
-        console.error('authAPIUrl is null.');
-        return;
-      }
+      const authAPIUrl = this.getAttribute('authAPIUrl')||""
+     if(authAPIUrl==""){
+console.log("null")
+return
+     }
       const data = {
         method: "POST",
         headers: {
@@ -74,7 +74,6 @@ this.render()
         })
 
       }
-
 
       fetch(authAPIUrl, data)
         .then(response => {

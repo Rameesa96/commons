@@ -14,6 +14,10 @@ export class Thumbsup extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.getData()
         this.render();
+      const button = this.shadowRoot?.querySelector('button');
+      if (button) {
+        button.addEventListener('click', this.handleClick);
+      }
     }
 getData(){
   const queryGetdata = this.getAttribute('queryGetdata')

@@ -58,6 +58,7 @@ this.render()
       const query = this.getAttribute('query')
       const bearerToken = this.getAttribute('bearerToken')||""
       const authAPIUrl = this.getAttribute('authAPIUrl')||""
+      console.log(authAPIUrl)
       const data = {
         method: "POST",
         headers: {
@@ -71,16 +72,19 @@ this.render()
         })
 
       }
-      fetch(authAPIUrl, data)
-        .then(response => {
-          response.json();
-          console.log(response)
-        }).then(data=>{
-          console.log(data)
-        })
-        .catch(error => {
-          console.log(error);
-        });
+    fetch(authAPIUrl, data)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.log('Error:', error);
+      });
      }
 
     private render() {

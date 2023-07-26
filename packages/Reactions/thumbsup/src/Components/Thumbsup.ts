@@ -16,9 +16,12 @@ export class Thumbsup extends HTMLElement {
 
     const button = this.shadowRoot?.querySelector('#thumbsup-button');
     if (button) {
-      console.log("button")
-      button.addEventListener('click', this.handleClick);
+      console.log(button)
+      button.addEventListener('click', (event) => {
+        console.log('Button clicked');
+      });
     }
+   
   }
 
 getData(){

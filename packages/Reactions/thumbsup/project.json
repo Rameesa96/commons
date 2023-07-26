@@ -18,7 +18,7 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "node tools/scripts/publish.mjs reactions-thumbsup {args.ver} {args.tag}",
-        "args": "--ver='0.12.0' --tag='latest'"
+        "args": "--ver='0.13.0' --tag='latest'"
       },
       "dependsOn": [
         "build"

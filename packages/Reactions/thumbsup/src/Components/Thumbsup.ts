@@ -3,15 +3,19 @@ export class Thumbsup extends HTMLElement {
     names = '';
     isHovered = false;
     envInfo = {};
-  private query = this.getAttribute('query');
-  private bearerToken = this.getAttribute('bearerToken')||"";
-  private authAPIUrl = this.getAttribute('authAPIUrl');
+bearerToken=""
+authAPIUrl=""
+query=""
     constructor() {
         super();
       this.attachShadow({ mode: 'open' });
     }
 
   connectedCallback() {
+
+     this.query = this.getAttribute('query')||"";
+      this.bearerToken = this.getAttribute('bearerToken') || "";
+     this.authAPIUrl = this.getAttribute('authAPIUrl')||""
     this.getData();
     this.render();
     const cancelButton = this.shadowRoot?.querySelector('#cancel-button');

@@ -5,7 +5,6 @@ export class Thumbsup extends HTMLElement {
     envInfo = {};
     constructor() {
         super();
-      this.attachShadow({ mode: 'open' });
       this.handleClick = this.handleClick.bind(this);
     }
 

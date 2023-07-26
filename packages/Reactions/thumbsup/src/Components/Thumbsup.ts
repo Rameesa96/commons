@@ -18,6 +18,10 @@ export class Thumbsup extends HTMLElement {
 getData(){
   const queryGetdata = this.getAttribute('queryGetdata')
   const authAPIUrlGetdata= this.getAttribute('authAPIUrlGetdata')
+  if (!authAPIUrlGetdata) {
+    console.error('authAPIUrlGetdata is null.');
+    return;
+  }
   const data = {
     method: "POST",
     headers: {
@@ -58,8 +62,12 @@ getData(){
 
     handleClick() {
       const query = this.getAttribute('query')
-      const bearerToken = this.getAttribute('bearerToken')
-      const authAPIUrl:string = this.getAttribute('authAPIUrl')
+      const bearerToken = this.getAttribute('bearerToken')|| ""
+      const authAPIUrl = this.getAttribute('authAPIUrl')
+      if (!authAPIUrl) {
+        console.error('authAPIUrl is null.');
+        return;
+      }
       const data = {
         method: "POST",
         headers: {

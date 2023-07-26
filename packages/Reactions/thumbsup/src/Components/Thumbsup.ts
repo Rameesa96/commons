@@ -12,9 +12,40 @@ export class Thumbsup extends HTMLElement {
 
     connectedCallback() {
         this.attachShadow({ mode: 'open' });
+        this.getData()
         this.render();
     }
+getData(){
+  const queryGetdata = this.getAttribute('queryGetdata')
+  const authAPIUrlGetdata= this.getAttribute('authAPIUrlGetdata')
+  const data = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "cache-control": "no-cache"
+    },
+    body: JSON.stringify({
+      query: `${queryGetdata}`
+    })
+  };
 
+  fetch(authAPIUrlGetdata, data)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      if (data.data.getPromData.status === "Success") {
+        const JSONData = JSON.parse(data.data.getPromData.data);
+        // Your code to handle JSONData here
+        if (JSONData.length > 0) {
+
+          this.count=JSONData.length
+        }
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
     handleMouseEnter() {
         this.isHovered = true;
         this.render();
@@ -26,8 +57,32 @@ export class Thumbsup extends HTMLElement {
     }
 
     handleClick() {
-       console.log("clicked")
-    }
+      const query = this.getAttribute('query')
+      const bearerToken = this.getAttribute('bearerToken')
+      const authAPIUrl:string = this.getAttribute('authAPIUrl')
+      const data = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "cache-control": "no-cache",
+          "auth-strategy": "next",
+          "Authorization": bearerToken
+        },
+        body: JSON.stringify({
+          query: `${query}`
+        })
+
+      }
+
+
+      fetch(authAPIUrl, data)
+        .then(response => {
+          response.json();
+          this.getData()
+        }).catch(error => {
+          console.log(error);
+        });
+     }
 
     private render() {
         if(this.shadowRoot){

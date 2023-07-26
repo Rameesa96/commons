@@ -3,7 +3,9 @@ export class Thumbsup extends HTMLElement {
     names = '';
     isHovered = false;
     envInfo = {};
-  private formElement!: HTMLButtonElement;
+  private query = this.getAttribute('query');
+  private bearerToken = this.getAttribute('bearerToken')||"";
+  private authAPIUrl = this.getAttribute('authAPIUrl');
     constructor() {
         super();
       this.attachShadow({ mode: 'open' });
@@ -19,13 +21,7 @@ export class Thumbsup extends HTMLElement {
   }
 
 private getData(){
-  const query = this.getAttribute('query');
-  const bearerToken = this.getAttribute('bearerToken') || "";
-  const authAPIUrl = this.getAttribute('authAPIUrl');
   const queryGetdata = this.getAttribute('queryGetdata')
-  console.log("beare", bearerToken)
-  console.log("authAPIUrl:", authAPIUrl);
-  console.log("query:", query);
   const authAPIUrlGetdata= this.getAttribute('authAPIUrlGetdata')
   if (!authAPIUrlGetdata) {
     console.error('authAPIUrlGetdata is null.');
@@ -62,32 +58,25 @@ this.render()
   private handleClick(event: Event) {
     event.preventDefault();
     console.log("clicked");
-
-    const query = this.getAttribute('query');
-    const bearerToken = this.getAttribute('bearerToken')||"";
-    const authAPIUrl = this.getAttribute('authAPIUrl');
-    if (!authAPIUrl) {
+    if (!this.authAPIUrl) {
       console.error('authAPIUrlGetdata is null.');
       return;
     }
-    console.log("beareh",bearerToken)
-    console.log("authAPIUrlh:",authAPIUrl);
-    console.log("queryh:",query);
-
+ 
     const data = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "cache-control": "no-cache",
         "auth-strategy": "next",
-        "Authorization": bearerToken
+        "Authorization": this.bearerToken
       },
       body: JSON.stringify({
-        query: query
+        query: this.query
       })
     };
 
-    fetch(authAPIUrl, data)
+    fetch(this.authAPIUrl, data)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok.');

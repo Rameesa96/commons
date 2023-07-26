@@ -10,6 +10,7 @@ export class Thumbsup extends HTMLElement {
     }
 
   connectedCallback() {
+    this.getData();
     this.render();
     const cancelButton = this.shadowRoot?.querySelector('#cancel-button');
     if (cancelButton) {
@@ -55,9 +56,8 @@ this.render()
   private handleClick() {
       console.log("clicked")
       const query = this.getAttribute('query')
-      const bearerToken = this.getAttribute('bearerToken')|| ""
+      const bearerToken = this.getAttribute('bearerToken')||""
       const authAPIUrl = this.getAttribute('authAPIUrl')||""
-
       const data = {
         method: "POST",
         headers: {
@@ -71,12 +71,14 @@ this.render()
         })
 
       }
-
       fetch(authAPIUrl, data)
         .then(response => {
           response.json();
           console.log(response)
-        }).catch(error => {
+        }).then(data=>{
+          console.log(data)
+        })
+        .catch(error => {
           console.log(error);
         });
      }

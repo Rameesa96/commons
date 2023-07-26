@@ -10,16 +10,14 @@ export class Thumbsup extends HTMLElement {
     }
 
   connectedCallback() {
-    this.getData();
     this.render();
-    this.formElement = this.shadowRoot?.querySelector('button') as HTMLButtonElement;
-    if (this.formElement) {
-      console.log(this.formElement)
-      this.formElement.addEventListener('submit', this.handleClick);
+    const cancelButton = this.shadowRoot?.querySelector('#cancel-button');
+    if (cancelButton) {
+      cancelButton.addEventListener('click', this.handleClick);
     }
   }
 
-getData(){
+private getData(){
   const queryGetdata = this.getAttribute('queryGetdata')
   const authAPIUrlGetdata= this.getAttribute('authAPIUrlGetdata')
   if (!authAPIUrlGetdata) {
@@ -92,11 +90,7 @@ this.render()
         this.shadowRoot.innerHTML = `
       <div>
         <span class="slds-m-right_x-small slds-m-right_x-bottom" style="position: relative">
-          <button  id="thumbsup-button"  style="border: none; cursor: pointer" class="tooltip-info-link social-proof-emoji thumbsup_click checked" title="thumbsup"  data-emoji="thumbsup">
-            <span class="slds-badge font-size-14 thumbsup_Button" id="thumbsup_Button"> Follow 👍
-              <span class="slds-m-left_xx-small thumbsup_emojiCount" id="thumbsup_emojiCount">${this.count}</span>
-            </span>
-          </button>
+          <button type="button" id="cancel-button">Follow 👍${this.count}</button>
         </span>
       </div>
     `;}

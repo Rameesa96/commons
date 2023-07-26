@@ -29,7 +29,7 @@ getData(){
       "cache-control": "no-cache"
     },
     body: JSON.stringify({
-      query: `${queryGetdata}`
+      query: queryGetdata
     })
   };
 
@@ -77,7 +77,7 @@ getData(){
           "Authorization": bearerToken
         },
         body: JSON.stringify({
-          query: `${query}`
+          query: query
         })
 
       }

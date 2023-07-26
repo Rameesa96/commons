@@ -75,7 +75,7 @@ this.render()
       fetch(authAPIUrl, data)
         .then(response => {
           response.json();
-          this.getData()
+          console.log(response)
         }).catch(error => {
           console.log(error);
         });

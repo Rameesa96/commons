@@ -22,6 +22,9 @@ export class Thumbsup extends HTMLElement {
 
 private getData(){
   const queryGetdata = this.getAttribute('queryGetdata')
+  console.log("beare", this.bearerToken)
+  console.log("authAPIUrl:", this.authAPIUrl);
+  console.log("query:",this.query);
   const authAPIUrlGetdata= this.getAttribute('authAPIUrlGetdata')
   if (!authAPIUrlGetdata) {
     console.error('authAPIUrlGetdata is null.');
@@ -55,8 +58,10 @@ this.render()
       console.log(error);
     });
 }
-  private handleClick(event: Event) {
-    event.preventDefault();
+  private handleClick() {
+    console.log("beareh", this.bearerToken)
+    console.log("authAPIUrlh:", this.authAPIUrl);
+    console.log("queryh:", this.query);
     console.log("clicked");
     if (!this.authAPIUrl) {
       console.error('authAPIUrlGetdata is null.');

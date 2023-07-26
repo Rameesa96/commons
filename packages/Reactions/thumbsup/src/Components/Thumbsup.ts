@@ -5,10 +5,10 @@ export class Thumbsup extends HTMLElement {
     envInfo = {};
     constructor() {
         super();
+      this.attachShadow({ mode: 'open' });
     }
 
     connectedCallback() {
-        this.attachShadow({ mode: 'open' });
         this.getData()
         this.render();
       const button = this.shadowRoot?.querySelector('#thumbsup-button');
@@ -51,7 +51,7 @@ this.render()
       console.log(error);
     });
 }
-    handleClick() {
+  private handleClick() {
       console.log("clicked")
       const query = this.getAttribute('query')
       const bearerToken = this.getAttribute('bearerToken')|| ""

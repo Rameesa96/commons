@@ -19,7 +19,13 @@ export class Thumbsup extends HTMLElement {
   }
 
 private getData(){
+  const query = this.getAttribute('query');
+  const bearerToken = this.getAttribute('bearerToken') || "";
+  const authAPIUrl = this.getAttribute('authAPIUrl');
   const queryGetdata = this.getAttribute('queryGetdata')
+  console.log("beare", bearerToken)
+  console.log("authAPIUrl:", authAPIUrl);
+  console.log("query:", query);
   const authAPIUrlGetdata= this.getAttribute('authAPIUrlGetdata')
   if (!authAPIUrlGetdata) {
     console.error('authAPIUrlGetdata is null.');
@@ -57,11 +63,16 @@ this.render()
     event.preventDefault();
     console.log("clicked");
 
-    const query = this.getAttribute('query') || "";
-    const bearerToken = this.getAttribute('bearerToken') || "";
-    const authAPIUrl = this.getAttribute('authAPIUrl') || "";
-    console.log("authAPIUrl:", authAPIUrl);
-    console.log("query:", query);
+    const query = this.getAttribute('query');
+    const bearerToken = this.getAttribute('bearerToken')||"";
+    const authAPIUrl = this.getAttribute('authAPIUrl');
+    if (!authAPIUrl) {
+      console.error('authAPIUrlGetdata is null.');
+      return;
+    }
+    console.log("beareh",bearerToken)
+    console.log("authAPIUrlh:",authAPIUrl);
+    console.log("queryh:",query);
 
     const data = {
       method: "POST",

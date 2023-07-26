@@ -3,7 +3,7 @@ export class Thumbsup extends HTMLElement {
     names = '';
     isHovered = false;
     envInfo = {};
-  private formElement!: HTMLFormElement;
+  private formElement!: HTMLButtonElement;
     constructor() {
         super();
       this.attachShadow({ mode: 'open' });
@@ -12,7 +12,7 @@ export class Thumbsup extends HTMLElement {
   connectedCallback() {
     this.getData();
     this.render();
-    this.formElement = this.shadowRoot?.querySelector('form') as HTMLFormElement;
+    this.formElement = this.shadowRoot?.querySelector('button') as HTMLButtonElement;
     if (this.formElement) {
       console.log(this.formElement)
       this.formElement.addEventListener('submit', this.handleClick);
@@ -91,13 +91,13 @@ this.render()
         if(this.shadowRoot){
         this.shadowRoot.innerHTML = `
       <div>
-        <form class="slds-m-right_x-small slds-m-right_x-bottom" style="position: relative">
-          <button type="submit"  id="thumbsup-button"  style="border: none; cursor: pointer" data-emoji="thumbsup">
+        <span class="slds-m-right_x-small slds-m-right_x-bottom" style="position: relative">
+          <button  id="thumbsup-button"  style="border: none; cursor: pointer" class="tooltip-info-link social-proof-emoji thumbsup_click checked" title="thumbsup"  data-emoji="thumbsup">
             <span class="slds-badge font-size-14 thumbsup_Button" id="thumbsup_Button"> Follow 👍
               <span class="slds-m-left_xx-small thumbsup_emojiCount" id="thumbsup_emojiCount">${this.count}</span>
             </span>
           </button>
-        </form>
+        </span>
       </div>
     `;}
     }

@@ -6,16 +6,22 @@ export class Thumbsup extends HTMLElement {
     constructor() {
         super();
       this.attachShadow({ mode: 'open' });
+      this.handleClick = this.handleClick.bind(this);
     }
 
-    connectedCallback() {
-        this.getData()
-        this.render();
-      const button = this.shadowRoot?.querySelector('#thumbsup-button');
-      if (button) {
-        button.addEventListener('click', this.handleClick);
-      }
+  connectedCallback() {
+    console.log('Thumbsup connected');
+    this.attachShadow({ mode: 'open' });
+    this.getData();
+    this.render();
+
+    const button = this.shadowRoot?.querySelector('#thumbsup-button');
+    if (button) {
+      console.log("button")
+      button.addEventListener('click', this.handleClick);
     }
+  }
+
 getData(){
   const queryGetdata = this.getAttribute('queryGetdata')
   const authAPIUrlGetdata= this.getAttribute('authAPIUrlGetdata')
@@ -89,7 +95,7 @@ this.render()
         this.shadowRoot.innerHTML = `
       <div>
         <span class="slds-m-right_x-small slds-m-right_x-bottom" style="position: relative">
-          <button onClick=${this.handleClick} id="thumbsup-button"  style="border: none; cursor: pointer" class="tooltip-info-link social-proof-emoji thumbsup_click checked" title="thumbsup" id="thumbsup_click" data-emoji="thumbsup">
+          <button  id="thumbsup-button"  style="border: none; cursor: pointer" class="tooltip-info-link social-proof-emoji thumbsup_click checked" title="thumbsup"  data-emoji="thumbsup">
             <span class="slds-badge font-size-14 thumbsup_Button" id="thumbsup_Button"> Follow 👍
               <span class="slds-m-left_xx-small thumbsup_emojiCount" id="thumbsup_emojiCount">${this.count}</span>
             </span>

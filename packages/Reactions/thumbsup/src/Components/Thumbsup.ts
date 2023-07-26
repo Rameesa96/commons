@@ -41,8 +41,8 @@ getData(){
         const JSONData = JSON.parse(data.data.getPromData.data);
         // Your code to handle JSONData here
         if (JSONData.length > 0) {
-
-          this.count=JSONData.length
+this.count=JSONData.length
+this.render()
         }
       }
     })

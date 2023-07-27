@@ -92,6 +92,7 @@ this.render()
         if (!response.ok) {
           throw new Error('Network response was not ok.');
         }
+        this.getData();
         return response.json();
       })
       .then(data => {
@@ -106,9 +107,24 @@ this.render()
     private render() {
         if(this.shadowRoot){
         this.shadowRoot.innerHTML = `
+        <style>
+.text{
+  color:"var(--sds-c-badge-text-color,#080707)";
+      font-weight: 700;
+      font-size:14px;
+}
+.count{
+  margin-left:.25rem;
+}
+.button{
+  border-radius:50%;
+}
+        </style>
       <div>
-        <span class="slds-m-right_x-small slds-m-right_x-bottom" style="position: relative">
-          <button type="button" id="cancel-button" >Follow 👍${this.count}</button>
+        <span" class="button" style="position: relative">
+          <button type="button" class="text" id="cancel-button" >Follow 👍
+          <span class="count" thumbsup_emojiCount" id="thumbsup_emojiCount">${this.count}</span>
+          </button>
         </span>
       </div>
     `;}

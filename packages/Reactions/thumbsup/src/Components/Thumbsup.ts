@@ -6,6 +6,7 @@ export class Thumbsup extends HTMLElement {
    bearerToken=""
    authAPIUrl=""
    query=""
+
     constructor() {
         super();
       this.attachShadow({ mode: 'open' });
@@ -17,7 +18,6 @@ export class Thumbsup extends HTMLElement {
       this.bearerToken = this.getAttribute('bearerToken') || "";
      this.authAPIUrl = this.getAttribute('authAPIUrl')||""
     this.handleClick = this.handleClick.bind(this);
-    this.getData();
     this.render();
     const cancelButton = this.shadowRoot?.querySelector('#cancel-button');
     if (cancelButton) {

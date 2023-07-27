@@ -34,6 +34,8 @@ export class Thumbsup extends HTMLElement {
     console.log(cancelButton)
     if (cancelButton) {
     cancelButton.addEventListener('click', this.handleClick);
+      cancelButton.addEventListener("mouseover", () => this.handleMouseOver());
+      cancelButton.addEventListener("mouseout", () => this.handleMouseOut());
     }
   }
 
@@ -176,16 +178,11 @@ button{
         </span>
         <div className="tooltip-info" style={{ position: 'absolute', right: 0, minWidth: 210, lineHeight: 15, top: -32 }}>
               <div className="slds-popover__body eyeglasses_tooltip" id="eyeglasses_tooltip">
-                  ${this.names} <span id="eyeglasses_diffcount" className="slds-hide">0</span>
+                  ${this.names}
                </div>
         </div>
       </div>
     `;
-          const button = this.shadowRoot.querySelector("#cancel-button");
-          if (button) {
-            button.addEventListener("mouseover", () => this.handleMouseOver());
-            button.addEventListener("mouseout", () => this.handleMouseOut());
-          }
 }
     }
 }

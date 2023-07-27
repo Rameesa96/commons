@@ -163,7 +163,7 @@ button:hover {
 }
 
 
-.button:hover + .tooltip-info {
+button:hover + .tooltip-info {
   display: block;
 }
         </style>

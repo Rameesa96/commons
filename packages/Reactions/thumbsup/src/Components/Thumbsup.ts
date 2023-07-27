@@ -56,8 +56,9 @@ export class Thumbsup extends HTMLElement {
         // Your code to handle JSONData here
         if (JSONData.length > 0) {
 this.count=JSONData.length
-this.render()
-console.log("renderes")
+          requestAnimationFrame(() => {
+            this.render();
+          });
         }
       }
     })
@@ -94,7 +95,6 @@ console.log("renderes")
           throw new Error('Network response was not ok.');
         }
         this.getData();
-        this.render()
         return response.json();
       })
       .then(data => {

@@ -67,10 +67,9 @@ export class Thumbsup extends HTMLElement {
         const JSONData = JSON.parse(data.data.getPromData.data) as UserData[];
         // Your code to handle JSONData here
         if (JSONData.length > 0) {
-          
+          this.count = JSONData.length
           const nonAdminUsers = JSONData.filter(user=> !user.isAdmin);
           const nonAdminUserNames = nonAdminUsers.map(user=> user.personName).join(', ');
-          this.count = nonAdminUsers.length;
           this.names = nonAdminUserNames;
         }
       }

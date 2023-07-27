@@ -92,7 +92,6 @@ this.count=JSONData.length
         if (!response.ok) {
           throw new Error('Network response was not ok.');
         }
-        this.getData();
         return response.json();
       })
       .then(data => {
@@ -101,6 +100,7 @@ this.count=JSONData.length
       .catch(error => {
         console.log('Error:', error);
       });
+    this.getData();
   }
 
 

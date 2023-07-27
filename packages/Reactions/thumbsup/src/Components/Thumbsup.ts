@@ -56,15 +56,13 @@ export class Thumbsup extends HTMLElement {
         // Your code to handle JSONData here
         if (JSONData.length > 0) {
 this.count=JSONData.length
-          requestAnimationFrame(() => {
-            this.render();
-          });
         }
       }
     })
     .catch(error => {
       console.log(error);
     });
+    this.render()
 }
   private handleClick() {
     console.log("beareh", this.bearerToken)
@@ -111,9 +109,11 @@ this.count=JSONData.length
         this.shadowRoot.innerHTML = `
         <style>
 .text{
-  color:"var(--sds-c-badge-text-color,#080707)";
+  color:#080707;
       font-weight: 700;
       font-size:14px;
+          padding: 0.25rem 0.5rem;
+
 }
 .count{
   margin-left:.25rem;
@@ -125,8 +125,9 @@ button{
         </style>
       <div>
         <span" class="button" style="position: relative">
-          <button type="button" class="text" id="cancel-button" >Follow 👍
-          <span class="count" thumbsup_emojiCount" id="thumbsup_emojiCount">${this.count}</span>
+          <button type="button"  id="cancel-button" >
+          <span class="text">Follow 👍
+          <span class="count" thumbsup_emojiCount" id="thumbsup_emojiCount">${this.count}</span></span>
           </button>
         </span>
       </div>

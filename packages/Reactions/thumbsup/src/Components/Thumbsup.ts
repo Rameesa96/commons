@@ -174,8 +174,8 @@ button:hover {
           <span class="count" thumbsup_emojiCount" id="thumbsup_emojiCount">${this.count}</span></span>
           </button>
         </span>
-        <div className="tooltip-info" style={{ position: 'absolute', right: 0, minWidth: 210, lineHeight: 15, top: -32 }}>
-              <div className="slds-popover__body eyeglasses_tooltip" id="eyeglasses_tooltip">
+        <div class="tooltip-info" style={{ position: 'absolute', right: 0, minWidth: 210, lineHeight: 15, top: -32 }}>
+              <div>
                   ${this.names}
                </div>
         </div>

@@ -34,8 +34,6 @@ export class Thumbsup extends HTMLElement {
     console.log(cancelButton)
     if (cancelButton) {
     cancelButton.addEventListener('click', this.handleClick);
-      cancelButton.addEventListener("mouseover", () => this.handleMouseOver());
-      cancelButton.addEventListener("mouseout", () => this.handleMouseOut());
     }
   }
 
@@ -82,15 +80,7 @@ export class Thumbsup extends HTMLElement {
     });
     this.render()
 }
-  private handleMouseOver() {
-    this.isHovered = true;
-    this.render();
-  }
-
-  private handleMouseOut() {
-    this.isHovered = false;
-    this.render();
-  }
+ 
   private handleClick() {
     console.log("beareh", this.bearerToken)
     console.log("authAPIUrlh:",this.authAPIUrl);
@@ -149,7 +139,7 @@ export class Thumbsup extends HTMLElement {
   margin-left:.25rem;
 }
 .tooltip-info {
-          display: ${this.isHovered ? "block" : "none"};
+          display:none;
           position: absolute;
           right: 0;
           min-width: 210px;
@@ -167,6 +157,14 @@ export class Thumbsup extends HTMLElement {
 button{
   border-radius:15rem;
   border:none;
+}
+button:hover {
+  border:none
+}
+
+
+.button:hover + .tooltip-info {
+  display: block;
 }
         </style>
       <div>

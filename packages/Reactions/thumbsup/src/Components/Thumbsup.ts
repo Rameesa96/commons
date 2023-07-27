@@ -57,6 +57,7 @@ export class Thumbsup extends HTMLElement {
         if (JSONData.length > 0) {
 this.count=JSONData.length
 this.render()
+console.log("renderes")
         }
       }
     })
@@ -116,8 +117,9 @@ this.render()
 .count{
   margin-left:.25rem;
 }
-.button{
+button{
   border-radius:50%;
+  border:none;
 }
         </style>
       <div>

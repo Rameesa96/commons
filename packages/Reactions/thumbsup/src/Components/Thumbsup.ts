@@ -146,6 +146,22 @@ export class Thumbsup extends HTMLElement {
 .count{
   margin-left:.25rem;
 }
+.tooltip-info {
+          display: ${this.isHovered ? "block" : "none"};
+          position: absolute;
+          right: 0;
+          min-width: 210px;
+          line-height: 15;
+          top: -32px;
+          background-color:#142f58;
+              width: auto;
+    max-width:20rem;
+    border: 0;
+        border-radius: 0.25rem;
+    min-height: 2rem;
+    z-index: 6000;
+    text-color:white;
+        }
 button{
   border-radius:15rem;
   border:none;

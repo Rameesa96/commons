@@ -6,18 +6,19 @@ export class Thumbsup extends HTMLElement {
    bearerToken=""
    authAPIUrl=""
    query=""
-
+   
     constructor() {
         super();
       this.attachShadow({ mode: 'open' });
     }
 
-  connectedCallback() {
+  async connectedCallback() {
 
      this.query = this.getAttribute('query')||"";
       this.bearerToken = this.getAttribute('bearerToken') || "";
      this.authAPIUrl = this.getAttribute('authAPIUrl')||""
     this.handleClick = this.handleClick.bind(this);
+    await this.getData();
     this.render();
     const cancelButton = this.shadowRoot?.querySelector('#cancel-button');
     if (cancelButton) {
@@ -25,7 +26,7 @@ export class Thumbsup extends HTMLElement {
     }
   }
 
-private getData(){
+  private async getData(){
   const queryGetdata = this.getAttribute('queryGetdata')
   console.log("beare", this.bearerToken)
   console.log("authAPIUrl:", this.authAPIUrl);
@@ -46,7 +47,7 @@ private getData(){
     })
   };
 
-  fetch(authAPIUrlGetdata, data)
+ await fetch(authAPIUrlGetdata, data)
     .then(response => response.json())
     .then(data => {
       console.log(data)

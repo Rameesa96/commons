@@ -96,11 +96,11 @@ this.count=JSONData.length
       })
       .then(data => {
         console.log("Response data:", data);
+        this.getData()
       })
       .catch(error => {
         console.log('Error:', error);
       });
-    this.getData();
   }
 
 

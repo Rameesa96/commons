@@ -98,7 +98,7 @@ this.count=JSONData.length
         if (data.data.addPrometheusData.addPrometheusDataResult.status==="Success"){
           setTimeout(() => {
             this.getData(); // Call getData after a delay
-          }, 2000);
+          }, 5000);
         }
       })
       .catch(error => {

@@ -95,8 +95,9 @@ this.count=JSONData.length
         return response.json();
       })
       .then(data => {
-        console.log("Response data:", data);
-        this.getData()
+        if (data.data.addPrometheusData.addPrometheusDataResult.status==="Success"){
+          this.getData()
+        }
       })
       .catch(error => {
         console.log('Error:', error);

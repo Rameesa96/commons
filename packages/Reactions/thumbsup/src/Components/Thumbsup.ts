@@ -13,19 +13,17 @@ export class Thumbsup extends HTMLElement {
     }
 
   async connectedCallback() {
-
-     this.query = this.getAttribute('query')||"";
-      this.bearerToken = this.getAttribute('bearerToken') || "";
-     this.authAPIUrl = this.getAttribute('authAPIUrl')||""
+    this.query = this.getAttribute('query')||"";
+    this.bearerToken = this.getAttribute('bearerToken') || "";
+    this.authAPIUrl = this.getAttribute('authAPIUrl')||""
     this.handleClick = this.handleClick.bind(this);
     await this.getData();
     this.render();
     const cancelButton = this.shadowRoot?.querySelector('#cancel-button');
     console.log(cancelButton)
     if (cancelButton) {
-      cancelButton.addEventListener('click', this.handleClick);
+    cancelButton.addEventListener('click', this.handleClick);
     }
-
   }
 
   private async getData(){
@@ -96,6 +94,7 @@ console.log("renderes")
           throw new Error('Network response was not ok.');
         }
         this.getData();
+        this.render()
         return response.json();
       })
       .then(data => {
@@ -120,7 +119,7 @@ console.log("renderes")
   margin-left:.25rem;
 }
 button{
-  border-radius:20%;
+  border-radius:15rem;
   border:none;
 }
         </style>

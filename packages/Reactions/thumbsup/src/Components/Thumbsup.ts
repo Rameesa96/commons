@@ -1,11 +1,22 @@
+type UserData ={
+  createdat: string;
+  current_timestamp: string;
+  emojiName: string;
+  exported_instance: string;
+  // Add other properties here...
+  isAdmin: boolean;
+  personName: string;
+}
 export class Thumbsup extends HTMLElement {
-    count = '';
+  
+    count:number|string = "";
     names = '';
     isHovered = false;
     envInfo = {};
    bearerToken=""
    authAPIUrl=""
    query=""
+   
    
     constructor() {
         super();
@@ -51,11 +62,16 @@ export class Thumbsup extends HTMLElement {
     .then(response => response.json())
     .then(data => {
       console.log(data)
+      
       if (data.data.getPromData.status === "Success") {
-        const JSONData = JSON.parse(data.data.getPromData.data);
+        const JSONData = JSON.parse(data.data.getPromData.data) as UserData[];
         // Your code to handle JSONData here
         if (JSONData.length > 0) {
-this.count=JSONData.length
+          
+          const nonAdminUsers = JSONData.filter(user=> !user.isAdmin);
+          const nonAdminUserNames = nonAdminUsers.map(user=> user.personName).join(', ');
+          this.count = nonAdminUsers.length;
+          this.names = nonAdminUserNames;
         }
       }
     })
@@ -64,6 +80,15 @@ this.count=JSONData.length
     });
     this.render()
 }
+  private handleMouseOver() {
+    this.isHovered = true;
+    this.render();
+  }
+
+  private handleMouseOut() {
+    this.isHovered = false;
+    this.render();
+  }
   private handleClick() {
     console.log("beareh", this.bearerToken)
     console.log("authAPIUrlh:",this.authAPIUrl);
@@ -115,7 +140,7 @@ this.count=JSONData.length
   color:#080707;
       font-weight: 700;
       font-size:14px;
-          padding: 0.25rem 0.5rem;
+          padding: 0.4rem 0.5rem;
 
 }
 .count{
@@ -133,8 +158,19 @@ button{
           <span class="count" thumbsup_emojiCount" id="thumbsup_emojiCount">${this.count}</span></span>
           </button>
         </span>
+        <div className="tooltip-info" style={{ position: 'absolute', right: 0, minWidth: 210, lineHeight: 15, top: -32 }}>
+              <div className="slds-popover__body eyeglasses_tooltip" id="eyeglasses_tooltip">
+                  ${this.names} <span id="eyeglasses_diffcount" className="slds-hide">0</span>
+               </div>
+        </div>
       </div>
-    `;}
+    `;
+          const button = this.shadowRoot.querySelector("#cancel-button");
+          if (button) {
+            button.addEventListener("mouseover", () => this.handleMouseOver());
+            button.addEventListener("mouseout", () => this.handleMouseOut());
+          }
+}
     }
 }
 

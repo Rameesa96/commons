@@ -21,9 +21,11 @@ export class Thumbsup extends HTMLElement {
     await this.getData();
     this.render();
     const cancelButton = this.shadowRoot?.querySelector('#cancel-button');
+    console.log(cancelButton)
     if (cancelButton) {
       cancelButton.addEventListener('click', this.handleClick);
     }
+
   }
 
   private async getData(){
@@ -118,7 +120,7 @@ console.log("renderes")
   margin-left:.25rem;
 }
 button{
-  border-radius:50%;
+  border-radius:20%;
   border:none;
 }
         </style>

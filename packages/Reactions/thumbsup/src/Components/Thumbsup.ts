@@ -139,21 +139,15 @@ export class Thumbsup extends HTMLElement {
   margin-left:.25rem;
 }
 .tooltip-info {
-          display:none;
-          position: absolute;
-          right: 0;
-          min-width: 210px;
-          line-height: 15;
-          top: -32px;
-          background-color:#142f58;
-              width: auto;
-    max-width:20rem;
-    border: 0;
-        border-radius: 0.25rem;
-    min-height: 2rem;
-    z-index: 6000;
-    text-color:white;
-        }
+    display: none;
+   text-align: center;
+   width: 200px!important;
+   height: auto!important;
+    background-color: #142f58;
+    border-radius: 0.25rem;
+    color:white;
+    padding:2rem;
+}
 button{
   border-radius:15rem;
   border:none;

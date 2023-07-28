@@ -18,11 +18,9 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "node tools/scripts/publish.mjs reactions-thumbsup {args.ver} {args.tag}",
-        "args": "--ver='0.48.0' --tag='latest'"
+        "args": "--ver='0.0.10' --tag='latest'"
       },
-      "dependsOn": [
-        "build"
-      ]
+      "dependsOn": ["build"]
     },
     "lint": {
       "executor": "@nx/linter:eslint",

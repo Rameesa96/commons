@@ -29,7 +29,6 @@ export class Thumbsup extends HTMLElement {
     await this.getData();
     this.render();
     const Button = this.shadowRoot?.querySelector("#button");
-    console.log(Button);
     if (Button) {
       Button.addEventListener("click", this.handleClick);
     }
@@ -160,7 +159,7 @@ button:hover + .tooltip-info {
           <span class="count thumbsup_emojiCount" id="thumbsup_emojiCount">${this.count}</span></span>
           </button>
         </span>
-       ${this.names !== ""? `
+       ${this.names != ""? `
         <div class="tooltip-info" style="position: absolute; right: 0; min-width: 210px; line-height: 15; top: -32">
           <div>
             ${this.names}

@@ -152,10 +152,10 @@ button:hover + .tooltip-info {
 }
         </style>
       <div>
-        <span" class="button" style="position: relative">
+        <span class="button" style="position: relative">
           <button type="button"  id="button" >
           <span class="text">Follow 👍
-          <span class="count" thumbsup_emojiCount" id="thumbsup_emojiCount">${this.count}</span></span>
+          <span class="count thumbsup_emojiCount" id="thumbsup_emojiCount">${this.count}</span></span>
           </button>
         </span>
        ${this.names !== '' ? `

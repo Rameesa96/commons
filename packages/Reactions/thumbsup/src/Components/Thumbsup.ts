@@ -158,12 +158,14 @@ button:hover + .tooltip-info {
           <span class="count" thumbsup_emojiCount" id="thumbsup_emojiCount">${this.count}</span></span>
           </button>
         </span>
-        <div class="tooltip-info" style={{ position: 'absolute', right: 0, minWidth: 210, lineHeight: 15, top: -32 }}>
-              <div>
-                  ${this.names}
-               </div>
+       ${this.names !== '' ? `
+        <div class="tooltip-info" style="position: absolute; right: 0; min-width: 210px; line-height: 15; top: -32">
+          <div>
+            ${this.names}
+          </div>
         </div>
-      </div>
+        ` : ''}
+      </div>  
     `;
     }
   }

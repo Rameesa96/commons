@@ -1,6 +1,6 @@
 {
   "name": "@rameesa96/thumbsup",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "type": "commonjs",
   "main": "./src/index.ts",
   "repository": {
